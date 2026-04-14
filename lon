@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #667eea;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5a67d8;
+    }
+
+    .mensagem {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .erro {
+      color: red;
+    }
+
+    .sucesso {
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+    <h2>🔐 Login</h2>
+
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
+
+    <button onclick="login()">Entrar</button>
+
+    <p id="mensagem" class="mensagem"></p>
+  </div>
+
+  <script>
+    function login() {
+      const usuario = document.getElementById("usuario").value;
+      const senha = document.getElementById("senha").value;
+      const mensagem = document.getElementById("mensagem");
+
+      // Usuário e senha fixos (exemplo)
+      const usuarioCorreto = "admin";
+      const senhaCorreta = "1234";
+
+      if (usuario === "" || senha === "") {
+        mensagem.textContent = "Preencha todos os campos!";
+        mensagem.className = "mensagem erro";
+        return;
+      }
+
+      if (usuario === usuarioCorreto && senha === senhaCorreta) {
+        mensagem.textContent = "Login realizado com sucesso!";
+        mensagem.className = "mensagem sucesso";
+
+        // Simulação de redirecionamento
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 1000);
+
+      } else {
+        mensagem.textContent = "Usuário ou senha inválidos!";
+        mensagem.className = "mensagem erro";
+      }
+    }
+  </script>
+
+</body>
+</html>
